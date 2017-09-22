@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>welcome!</title>
+    <link href="/static/css/admin.css" type="css" />
+    <script type="text/javascript" src="/static/js/admin.js"></script>
+
+</head>
+<body>
+<div id="divID">
+    <div style="background-color:transparent;">
+        <form id="ff" method="post">
+            <ul class="reg-box">
+                <li>
+                    <label for="">用户名</label>
+                    <input type="text" name="accName" value="" class="account" maxlength="11" style="color:#999;" onBlur="textBlur(this)" onFocus="textFocus(this)"/>
+                <span class="error error5"></span>
+                </li>
+                <li>
+                    <label for="">密码</label>
+                    <input type="password" name="accPassWordi" class="admin_pwd" value="" style="color:#999;" onBlur="textBlur(this)" onFocus="textFocus(this)"/>
+                <span class="error error6"></span>
+                </li>
+                <li>
+                    <label for="">确认密码</label>
+                    <input type="password" name="accPassWordk" class="admin_pwd" value="" style="color:#999;" onBlur="textBlur(this)" onFocus="textFocus(this)"/>
+                <span class="error error6"></span>
+                </li>
+                <hr />
+                <li>
+                    <label for="">邮箱</label>
+                    <input type="email" name="accEmail" class="admin_email" value="" style="color:#999;" onBlur="textBlur(this)" onFocus="textFocus(this)"/>
+                    <span class="error error8"></span>
+                </li>
+                <li>
+                    <label for="">验证码</label>
+                    <input type="text" name="accConfirm" class="sradd photokey" id="key" value="" style="color:#999;ime-mode:disabled;-webkit-ime-mode:inactive;" onBlur="textBlur(this)" onFocus="textFocus(this) "  />
+                    <span class="add phoKey"></span>
+                    <span class="error error7"><img src="../tmp"></img></span>
+                </li>
+            </ul>
+            <div class="sub">
+                <input type="submit" value="注 册" style="text-align:center;"/>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

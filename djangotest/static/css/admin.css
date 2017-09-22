@@ -1,0 +1,87 @@
+/*最后是非常重要的 CSS 代码：*/
+
+body{
+    background: #000;
+}
+#divID {
+        position: fixed;
+        left: 47%;
+        top: 53%;
+        width: 500px;
+        margin-left: -200px;
+        margin-top: -150px;
+        /*禁止复制粘贴*/
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select:none;
+        color:#fff;
+    }
+.add phoKey {
+height:100px;
+width:10px;
+}
+.error error7{
+height:100px;
+width:10px;
+}
+
+.register_dialog_info {
+    float: left;
+    margin-left:10px;
+    color: #fff;
+    margin-top: 5px;
+    font-size: 20px;
+}
+form{padding: 20px 0px;}
+ul li {list-style: none;}
+.sub {
+    text-align: center;
+}
+.sub input {
+    display: inline-block;
+    width: 300px;
+    background-color: #012246;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    outline: none;
+    border: none;
+    margin: auto;
+    border-radius: 10px;
+}
+input[type = "submit"]:hover{cursor: pointer;}
+
+.reg-box { padding-left: 30px; }
+
+.reg-box li { line-height: 44px; width: 500px; overflow: hidden; }
+
+.reg-box li label { width: 68px; height: 50px; float: left; line-height: 50px; text-align: right; padding-right: 20px; }
+
+.reg-box li input,.reg-box li select{ border-radius: 3px; padding: 6px 0; font-size: 16px; width: 296px; height: 49px; line-height: 28px; border: 1px solid #dddddd; text-indent: 0.5em; float: left; }
+
+.reg-box li select option{font-size:16px;}
+
+/*验证码*/
+.add { width: 128px; height: 44px; float: left; _display: inline; cursor: pointer; margin-left: 20px; }
+
+.reg-box li .sradd { width: 148px; text-indent: 4px; font-size: 14px; }
+
+.reg-box li .input-code { width: 106px; padding: 10px; font-family: Arial; font-style: italic; color: red; letter-spacing: 1px; cursor: pointer; text-align: center; text-indent: 0; }
+
+.yzm,.phoKey { background: #012246; text-align: center; line-height: 44px; color: #fff; border-radius: 3px;}
+
+.phoKey{letter-spacing: 3px; font-size:18px;}
+
+.yzmc { background: #dddddd; text-align: center; line-height: 44px; color: #999; }
+
+.error { clear:both;display:block;color: red; padding-left: 90px; padding-bottom:5px;height:20px;float: left; font-size:12px;line-height: 20px;}
+
+input { background-color: #fff; outline: none; }
+
+.reg-box li { width: auto; }
+
+.reg-box li input.errorC, .errorC{ border: 1px solid blue; }
+
+.reg-box li input.checkedN , .checkedN{ border: 1px solid #1ece6d; }
