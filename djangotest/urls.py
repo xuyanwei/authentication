@@ -24,7 +24,11 @@ urlpatterns = [
 
     url(r'^sign_up/$', views.sign_up),
     url(r'^sign_in/$', views.sign_in),
+    url(r'^sign_out/$', views.sign_out),
+    url(r'^sign_in/find', views.find),
+    url(r'^password/$', views.getpassword),
     url(r'^active/(?P<active_code>.*)/$', ActiveUserView.as_view(), name="user_active"),
+    url(r'^changepassword/(?P<active_code>.*)/$', ActiveUserView.as_view(), name="user_passwd"),
 
     url(r'^admin/', admin.site.urls),
 ]

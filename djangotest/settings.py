@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'djangotest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'authtest',
+        'NAME': 'djangotest',
         'HOST': '10.10.10.179',
         'USER': 'xu',
         'PASSWORD': '123456',

@@ -13,8 +13,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as user_login, logout as user_logout
 from ..libs.captcha import *
 from ..libs.email_send import *
-import time,re
+import re
 from PIL import Image
+
 captcha = None
 
 # Create your views here.
@@ -64,12 +65,9 @@ def sign_in(request):
                 user = authenticate(username=username, password=password)
                 if user is not None:
                     user_login(request, user)
-                    #return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/successlogin'), {'user': request.user})
-                    #return HttpResponseRedirect(request.session['login_from'], {'user': request.user})
-                    #return HttpResponse('%s 登录成功！'%user)
                     return  render_to_response("myapp1/main.html", {'user':request.user})
                 else:
-                    return HttpResponse('用户名或是密码不正确！需要注册邮箱验证')
+                    return HttpResponse('用户名或是密码不正确！')
             return HttpResponse('验证码不正确！')
         return HttpResponse('验证码不存在！请重新访问页面')
 
@@ -84,4 +82,34 @@ def tmpgif(request):
     _captcha = Captcha(request)
     captcha = _captcha
     return HttpResponse(_captcha.display(), content_type="image/gif")
+
+def sign_out(request):
+    user_logout(request)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'), {})
+
+def find(request):
+    if request.method == "GET":
+        return render_to_response('myapp1/find.html', {})
+    else:
+        username = request.POST.get('accName', '')
+        email = request.POST.get('accEmail', '')
+        if len(email) < 5 or re.match("[a-zA-Z0-9]+\@+[a-zA-Z0-9]+\.+[a-zA-Z]", email) == None:
+            return HttpResponse('邮箱格式有误')
+        try:
+            User.objects.get(username=username)
+        except:
+            return HttpResponse('user is not exists')
+        send_register_email(username, email, "passwd")
+        return HttpResponse("请到您的邮箱验证： （%s）"%email)
+
+def getpassword(request):
+    new_password = request.POST.get('password', '')
+    confirm_new_password = request.POST.get('c_password', '')
+    if new_password == confirm_new_password:
+        user = User.objects.get(username=request.user)
+        user.set_password(new_password)
+        user.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    else:
+        return HttpResponse('<p>Enter the new password twice inconsistent!</p>')
 
