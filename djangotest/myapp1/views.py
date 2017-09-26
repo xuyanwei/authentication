@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, render_to_response
-
+from django.shortcuts import render_to_response
 from models import*
 from django.views.decorators.csrf import csrf_exempt
-
-from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, HttpResponseRedirect
-
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as user_login, logout as user_logout
 from ..libs.captcha import *
@@ -46,10 +42,9 @@ def sign_up(request):
                     user.save()
                 except Exception, e:
                     return HttpResponse('<p style="font-size:20px">Username already exists! </p>')
-
                 send_register_email(username, email, "register")
-                return HttpResponse('<p style="font-size:20px;text-align:center">Congratulations! Register is Success, '
-                                    'Please go to your email(%s) authentication</p>' % email)
+                return HttpResponse('<p style="font-size:20px;text-align:center">Congratulations! %s login success, '
+                                    'please go to your email(%s) authentication (within 1 hours)</p>' %(username, email))
             else:
                 return HttpResponse('<p style="font-size:20px;text-align:center">Enter password twice inconsistent!</p>')
         return HttpResponse('验证码不正确！')
@@ -100,7 +95,7 @@ def find(request):
         except:
             return HttpResponse('user is not exists')
         send_register_email(username, email, "passwd")
-        return HttpResponse("请到您的邮箱验证： （%s）"%email)
+        return HttpResponse("请到您的邮箱验证（1小时之内有效）： （%s）"%email)
 
 def getpassword(request):
     new_password = request.POST.get('password', '')

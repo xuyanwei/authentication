@@ -24,6 +24,7 @@ def send_register_email(username, email, send_type="register"):
         email_record.email = email
         email_record.username = username
         email_record.send_type = send_type
+        email_record.send_time = datetime.datetime.now()
         email_record.save()
         if send_type == "register":
             email_title = "注册激活链接"
