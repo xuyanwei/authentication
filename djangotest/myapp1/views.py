@@ -55,8 +55,12 @@ def sign_in(request):
         username = request.POST.get('accName', '')
         password = request.POST.get('accPassWord', '')
         confirm = request.POST.get('accConfirm', '')
+        accLogin = request.POST.get('accLogin', '')
         if captcha:
             if captcha.check(confirm):
+                if accLogin:
+                    if request.session:
+                        request.session.set_expiry(60*60*24*14)
                 user = authenticate(username=username, password=password)
                 if user is not None:
                     user_login(request, user)

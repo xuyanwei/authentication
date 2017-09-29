@@ -137,3 +137,5 @@ EMAIL_HOST = 'smtp.exmail.qq.com'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'xuyanwei@moyunsec.com'
 EMAIL_HOST_PASSWORD = 'kgz2EpJBFUJSw9P2'
+
+SESSION_COOKIE_AGE=60*10
