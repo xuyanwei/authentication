@@ -84,7 +84,7 @@ def tmpgif(request):
 
 def sign_out(request):
     user_logout(request)
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'), {})
+    return HttpResponseRedirect('/', {'user':request.user})
 
 def find(request):
     if request.method == "GET":
