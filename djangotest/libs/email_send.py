@@ -3,7 +3,7 @@ from random import Random # 用于生成随机码
 from django.core.mail import send_mail # 发送邮件模块
 from ..settings import EMAIL_HOST_USER  # setting.py添加的的配置信息
 from ..myapp1.models import *
-import time
+import datetime
 
 # 生成随机字符串
 def random_str(randomlength=8):
@@ -28,12 +28,12 @@ def send_register_email(username, email, send_type="register"):
         email_record.save()
         if send_type == "register":
             email_title = "注册激活链接"
-            email_body = u"请点击下面的链接激活你的账号:http://127.0.0.1:8081/active/{0}".format(code)
+            email_body = u"请点击下面的链接激活你的账号:http://10.10.10.223:8081/active/{0}".format(code)
             send_status = send_mail(email_title, email_body, EMAIL_HOST_USER, [email], fail_silently=False)
 
         elif send_type == "passwd":
             email_title = "修改密码链接"
-            email_body = u"请点击下面的链接修改你的密码:http://127.0.0.1:8081/changepassword/{0}".format(code)
+            email_body = u"请点击下面的链接修改你的密码:http://10.10.10.223:8081/changepassword/{0}".format(code)
             send_status = send_mail(email_title, email_body, EMAIL_HOST_USER, [email], fail_silently=False)
 
     except Exception, e:
