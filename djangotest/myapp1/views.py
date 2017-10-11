@@ -50,7 +50,7 @@ def sign_up(request):
         if captcha.check(confirm):
             if passwordi==passwordk:
                 try:
-                    user = User.objects.create_user(username=username, password=passwordi)
+                    user = User.objects.create_user(username=username, password=passwordi, email=email)
                     user.is_active = False
                     user.save()
                 except Exception, e:
